@@ -13,11 +13,18 @@ PADDLE_WIDTH = 10
 PADDLE_HEIGHT = 50
 PADDLE_DISTANCE_FROM_GOAL = 30
 PUCK_RADIUS = 10
+PUCK_SPEED = 5
+PADDLE_SPEED = 10 
 gameDisplay = pygame.display.set_mode((DISPLAY_X, DISPLAY_Y))
 
-puck = Puck(gameDisplay, board_width=DISPLAY_X, board_height=DISPLAY_Y, radius=PUCK_RADIUS)
-paddle_left = Paddle(gameDisplay, x=PADDLE_DISTANCE_FROM_GOAL, board_height=DISPLAY_Y, height=PADDLE_HEIGHT, width=PADDLE_WIDTH)
-paddle_right = Paddle(gameDisplay, x=DISPLAY_X-PADDLE_DISTANCE_FROM_GOAL, board_height=DISPLAY_Y, height=PADDLE_HEIGHT, width=PADDLE_WIDTH)
+puck = Puck(gameDisplay, board_width=DISPLAY_X, board_height=DISPLAY_Y,
+            speed=PUCK_SPEED, radius=PUCK_RADIUS)
+paddle_left = Paddle(gameDisplay, x=PADDLE_DISTANCE_FROM_GOAL,
+                     board_height=DISPLAY_Y, height=PADDLE_HEIGHT,
+                     width=PADDLE_WIDTH, speed = PADDLE_SPEED)
+paddle_right = Paddle(gameDisplay, x=DISPLAY_X-PADDLE_DISTANCE_FROM_GOAL,
+                      board_height=DISPLAY_Y, height=PADDLE_HEIGHT,
+                      width=PADDLE_WIDTH, speed = PADDLE_SPEED)
 
 
 def game_loop():
@@ -49,9 +56,9 @@ def game_loop():
                 elif event.key == pygame.K_s:
                     paddle_left.set_speed(0)
 
+
         puck.checkPaddle(paddle_left)
         puck.checkPaddle(paddle_right)
-
         puck.update()
         paddle_left.update()
         paddle_right.update()

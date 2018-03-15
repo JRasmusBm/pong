@@ -3,7 +3,8 @@ import utils.Color as Color
 
 class Paddle:
 
-    def __init__(self, gameDisplay, x, board_height, height=50, width=10):
+    def __init__(self, gameDisplay, x, board_height, height=50, width=10,
+                 speed=1):
         self.gameDisplay = gameDisplay
         self.board_height = board_height 
         self.x = x
@@ -11,7 +12,7 @@ class Paddle:
         self.dy = 0
         self.width = width
         self.height = height
-
+        self.speed = speed
 
     def update(self):
         if self.height//2 < self.y+self.dy < self.board_height-self.height//2:
@@ -21,9 +22,9 @@ class Paddle:
         if direction == 0:
             self.dy = 0
         if direction > 0:
-            self.dy = 5
+            self.dy = self.speed 
         if direction < 0:
-            self.dy = -5
+            self.dy = -self.speed 
 
     def show(self):
         pygame.draw.rect(self.gameDisplay, Color.WHITE, [self.x-self.width//2, self.y-self.height//2, self.width, self.height])
