@@ -68,7 +68,7 @@ def game_loop():
         paddle_left.show()
         paddle_right.show()
         pygame.display.update()
-       
+
         clock.tick(FPS)
 
 
