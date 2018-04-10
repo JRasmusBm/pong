@@ -17,9 +17,9 @@ class Puck:
         self.board_height = board_height
         self.board_width = board_width
         self.speed = speed
-#        self.angle = random.uniform(0, 2*pi)
-#        print(self.angle)
-#        self.magnitude = 5
+        #        self.angle = random.uniform(0, 2*pi)
+        #        print(self.angle)
+        #        self.magnitude = 5
         self.radius = radius
         self.reset()
 
@@ -35,21 +35,21 @@ class Puck:
         self.edges()
 
     def checkPaddle(self, paddle):
-            paddle_top = paddle.y - paddle.height // 2
-            paddle_bottom = paddle.y + paddle.height // 2
-            paddle_left = paddle.x - paddle.width // 2
-            paddle_right = paddle.x + paddle.width // 2
-            puck_left = self.x - self.radius
-            puck_right = self.x + self.radius
-            puck_top = self.y - self.radius
-            puck_bottom = self.y + self.radius
-            intersects = not (
-                puck_bottom < paddle_top or
-                paddle_bottom < puck_top or
-                puck_right < paddle_left or
-                paddle_right < puck_left)
-            if (intersects):
-                self.dx *=-1
+        paddle_top = paddle.y - paddle.height // 2
+        paddle_bottom = paddle.y + paddle.height // 2
+        paddle_left = paddle.x - paddle.width // 2
+        paddle_right = paddle.x + paddle.width // 2
+        puck_left = self.x - self.radius
+        puck_right = self.x + self.radius
+        puck_top = self.y - self.radius
+        puck_bottom = self.y + self.radius
+        intersects = not (
+            puck_bottom < paddle_top or
+            paddle_bottom < puck_top or
+            puck_right < paddle_left or
+            paddle_right < puck_left)
+        if (intersects):
+            self.dx *=-1
 
     def edges(self):
         in_y_bounds = 0 < self.y < self.board_height
@@ -58,11 +58,10 @@ class Puck:
 
         if not in_y_bounds:
             self.dy *= -1
-        if left_goal:
-            self.reset()
-        if right_goal:
-            self.reset()
-
+            if left_goal:
+                self.reset()
+                if right_goal:
+                    self.reset()
 
     def show(self):
         pygame.draw.circle(self.gameDisplay, Color.WHITE, (self.x, self.y), self.radius)

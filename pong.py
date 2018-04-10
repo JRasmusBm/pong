@@ -9,12 +9,12 @@ clock = pygame.time.Clock()
 FPS = 60
 DISPLAY_X = 600
 DISPLAY_Y = 400
-PADDLE_WIDTH = 10 
+PADDLE_WIDTH = 10
 PADDLE_HEIGHT = 50
 PADDLE_DISTANCE_FROM_GOAL = 30
 PUCK_RADIUS = 10
 PUCK_SPEED = 5
-PADDLE_SPEED = 10 
+PADDLE_SPEED = 10
 gameDisplay = pygame.display.set_mode((DISPLAY_X, DISPLAY_Y))
 
 puck = Puck(gameDisplay, board_width=DISPLAY_X, board_height=DISPLAY_Y,
@@ -68,7 +68,7 @@ def game_loop():
         paddle_left.show()
         paddle_right.show()
         pygame.display.update()
-        
+       
         clock.tick(FPS)
 
 
